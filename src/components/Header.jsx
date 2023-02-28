@@ -1,19 +1,23 @@
-import React, { useState } from "react";
-import { CiLight } from "react-icons/ci";
-import { MdOutlineArrowDropDown } from "react-icons/md";
+import React, { useContext, useState } from "react" ;
+import { CiLight } from "react-icons/ci" ;
+import { MdOutlineArrowDropDown } from "react-icons/md" ;
+import { Userdata } from "./context/Contextfuncs";
+
 
 function Header() {
   let [drop, setDrop] = useState(false);
+  let {  posts , setPosts } = useContext(Userdata)
 
   const handMenu = () => {
     setDrop(!drop);
   };
 
+
   return (
-    <div className="header shadow-md relative flex  bg-gray-500 text-white  items-center w-full h-[50px] rounded-lg ">
+    <div className="header shadow-md relative flex  bg-[#3A4272] text-white  items-center w-full min-h-[80px] rounded-lg ">
       <div className="menubar flex mx-2 ">
         <div className="flex items-center gap-6 ">
-          <CiLight size={30} /> <p className="font-bold">6 Suggestions</p>
+          <CiLight size={30} /> <p className=" font-bold md:text-[1.5rem]">{posts.length} Suggestions</p>
         </div>
         <div className="flex mx-8 items-center ">
           <div className="flex gap-2 items-center ">
@@ -28,19 +32,19 @@ function Header() {
           </div>
 
           <div
-            className={`dropdown-menu bg-gray-300 p-4 flex flex-col gap-2 rounded-lg mt-[15rem] ${
+            className={`dropdown-menu w-[250px]  text-black bg-white flex flex-col rounded-lg mt-[17rem] shadow-2xl ${
               drop ? "absolute" : "hidden"
             } `}
           >
-            <p className="px-2 text-md cursor-pointer ">Most upvotes</p>
-            <p className="px-2 text-md cursor-pointer ">Latest Upvotes</p>
-            <p className="px-2 text-md cursor-pointer ">Most Comments</p>
-            <p className="px-2 text-md cursor-pointer ">Latest Comments</p>
+            <p className="px-4 text-md cursor-pointer w-full py-3 border-b hover:text-purple-400 ">Most upvotes</p>
+            <p className="px-4 text-md cursor-pointer w-full py-3 border-b hover:text-purple-400 ">Latest Upvotes</p>
+            <p className="px-4 text-md cursor-pointer w-full py-3 border-b hover:text-purple-400 ">Most Comments</p>
+            <p className="px-4 text-md cursor-pointer w-full py-3 border-b hover:text-purple-400 ">Latest Comments</p>
             <p></p>
           </div>
         </div>
       </div>
-      <button className="border p-1 rounded-lg  ml-auto mr-1 bg-gray-200 text-black ">+Add Feedback</button>
+      <button className="hover:opacity-75 px-3 py-2 rounded-lg  ml-auto mr-4 bg-purple-500 text-white text-[14px]">+Add Feedback</button>
     </div>
   );
 }
