@@ -1,16 +1,44 @@
 import React, { useContext, useState } from "react" ;
 import { CiLight } from "react-icons/ci" ;
 import { MdOutlineArrowDropDown } from "react-icons/md" ;
+import { Link } from "react-router-dom";
 import { Userdata } from "./context/Contextfuncs";
 
 
 function Header() {
   let [drop, setDrop] = useState(false);
-  let {  posts , setPosts } = useContext(Userdata)
+  let { data , posts , setPosts } = useContext(Userdata)
+
+  
 
   const handMenu = () => {
     setDrop(!drop);
   };
+
+  const filterComments = (e)=> {
+    let x = e.target.textContent ;
+    setDrop(!drop)
+
+    switch(x){
+
+      case 'Most upvotes':
+        setPosts(JSON.parse(data)['productRequests'].sort((a , b)=> b.upvotes - a.upvotes))
+        break
+
+      case 'Latest Upvotes' :
+        setPosts(JSON.parse(data)['productRequests'].sort((a , b)=> a.upvotes - b.upvotes))
+        break
+      
+      case 'Most Comments' :
+        setPosts(JSON.parse(data)['productRequests'].sort((a , b)=> b.comments.length - a.comments.length))
+        break
+      
+      case 'Latest Comments' :
+        setPosts(JSON.parse(data)['productRequests'].sort((a , b)=> a.comments.length - b.comments.length))
+        break
+
+    }
+  }
 
 
   return (
@@ -36,15 +64,14 @@ function Header() {
               drop ? "absolute" : "hidden"
             } `}
           >
-            <p className="px-4 text-md cursor-pointer w-full py-3 border-b hover:text-purple-400 ">Most upvotes</p>
-            <p className="px-4 text-md cursor-pointer w-full py-3 border-b hover:text-purple-400 ">Latest Upvotes</p>
-            <p className="px-4 text-md cursor-pointer w-full py-3 border-b hover:text-purple-400 ">Most Comments</p>
-            <p className="px-4 text-md cursor-pointer w-full py-3 border-b hover:text-purple-400 ">Latest Comments</p>
-            <p></p>
+            <p onClick={(e)=> {filterComments(e)}} className="px-4 text-md cursor-pointer w-full py-3 border-b hover:text-purple-400 ">Most upvotes</p>
+            <p onClick={(e)=> {filterComments(e)}} className="px-4 text-md cursor-pointer w-full py-3 border-b hover:text-purple-400 ">Latest Upvotes</p>
+            <p onClick={(e)=> {filterComments(e)}} className="px-4 text-md cursor-pointer w-full py-3 border-b hover:text-purple-400 ">Most Comments</p>
+            <p onClick={(e)=> {filterComments(e)}} className="px-4 text-md cursor-pointer w-full py-3 border-b hover:text-purple-400 ">Latest Comments</p>
           </div>
         </div>
       </div>
-      <button className="hover:opacity-75 px-3 py-2 rounded-lg  ml-auto mr-4 bg-purple-500 text-white text-[14px]">+Add Feedback</button>
+      <Link to = "/add-feedback" className="hover:opacity-75 px-3 py-2 rounded-lg  ml-auto mr-4 bg-purple-500 text-white text-[14px]">+Add Feedback</Link>
     </div>
   );
 }

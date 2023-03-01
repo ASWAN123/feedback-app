@@ -6,6 +6,7 @@ import { Userdata } from './context/Contextfuncs';
 function Comments() {
   let { posts } = useContext(Userdata)
 
+  
 
 
   return (
@@ -21,7 +22,7 @@ function Comments() {
                 <button className='m-1 px-3 py-1 rounded-lg bg-gray-200 text-blue-600 cursor-pointer hover:opacity-75 capitalize'>{feedback.category}</button>
               </div>
               <div className='replies ml-auto mr-[5px] flex items-center gap-4 font-bold ' >
-                < FaCommentAlt />
+                < FaCommentAlt style={{color:"lightgray"}}/>
                 <span>{feedback.comments.length}</span>
               </div>
             </div>

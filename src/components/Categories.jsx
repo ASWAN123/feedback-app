@@ -11,8 +11,17 @@ function Categories() {
 
   let [category_list, setCategory_list] = useState(getCateories());
 
-  const HandleFilter = (cat)=> {
+  const HandleFilter = (e , cat)=> {
+    let all = document.querySelectorAll('.category-list > li')
+    all.forEach((al)=> {
+      al.classList.remove('bg-blue-400' , 'text-white')
+      al.classList.add('bg-gray-200' , 'text-blue-600')
+    })
     
+    e.target.classList.remove('bg-gray-200' , 'text-blue-600')
+    e.target.classList.add('bg-blue-400' , 'text-white')
+    
+
     let newPosts ;
     if(cat === 'All'){
       newPosts= JSON.parse(data)['productRequests']
@@ -24,7 +33,7 @@ function Categories() {
 
   return (
     <div className=" capitalize category shadow-md w-[250px] rounded-lg p-4 bg-white text-black ">
-      <ul className="flex gap-4 flex-wrap bg-white">
+      <ul className="category-list flex gap-4 flex-wrap bg-white">
         <li onClick={(e)=> {HandleFilter(e ,'All')}} className="py-1 px-2 rounded-lg bg-blue-400 text-white cursor-pointer hover:opacity-75 ">
           All
         </li>
@@ -33,7 +42,7 @@ function Categories() {
             <li
               className="py-1 px-2 rounded-lg bg-gray-200 text-blue-600 cursor-pointer hover:opacity-75"
               key={index}
-              onClick = {()=> {HandleFilter( cat )}}
+              onClick = {(e )=> {HandleFilter(e, cat )}}
             >
               {cat}
             </li>
