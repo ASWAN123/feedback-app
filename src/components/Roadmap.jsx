@@ -1,22 +1,20 @@
-
-
-
 import { clear } from '@testing-library/user-event/dist/clear'
 import React, { useContext, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { Userdata } from './context/Contextfuncs'
 
 function Roadmap() {
-  let {posts} = useContext(Userdata)
+  let {posts , data} = useContext(Userdata)
 
   const getRoadmap = () =>{
-    let roadmap =posts.map((req)=> req['status'] );
+    let roadmap =JSON.parse(data)['productRequests'].map((req)=> req['status'] );
     return roadmap ;
   }
 
   let [roadmap_items , setRoadmap_items ]  = useState(getRoadmap()) ;
-  let uniqueRoadmap = Array.from(new Set([...roadmap_items]))
-  uniqueRoadmap.shift()
+  let uniqueRoadmap = Array.from(new Set([...roadmap_items])).filter((x)=> x != "suggestion")
+  console.log(uniqueRoadmap)
+  
   
 
   return (

@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react" ;
+import React, { useContext, useEffect, useState } from "react" ;
 import { CiLight } from "react-icons/ci" ;
 import { MdOutlineArrowDropDown } from "react-icons/md" ;
 import { Link } from "react-router-dom";
@@ -8,7 +8,6 @@ import { Userdata } from "./context/Contextfuncs";
 function Header() {
   let [drop, setDrop] = useState(false);
   let { data , posts , setPosts } = useContext(Userdata)
-
   
 
   const handMenu = () => {
@@ -19,26 +18,33 @@ function Header() {
     let x = e.target.textContent ;
     setDrop(!drop)
 
+    let filtredposts ;
+
     switch(x){
 
       case 'Most upvotes':
-        setPosts(JSON.parse(data)['productRequests'].sort((a , b)=> b.upvotes - a.upvotes))
+        setPosts([...posts].sort((a , b)=> b.upvotes - a.upvotes)) ;
         break
 
       case 'Latest Upvotes' :
-        setPosts(JSON.parse(data)['productRequests'].sort((a , b)=> a.upvotes - b.upvotes))
+        setPosts([...posts].sort((a , b)=> a.upvotes - b.upvotes)) ;
         break
       
       case 'Most Comments' :
-        setPosts(JSON.parse(data)['productRequests'].sort((a , b)=> b.comments.length - a.comments.length))
+        setPosts([...posts].sort((a , b)=> b.comments.length - a.comments.length) );
         break
       
       case 'Latest Comments' :
-        setPosts(JSON.parse(data)['productRequests'].sort((a , b)=> a.comments.length - b.comments.length))
+        setPosts([...posts].sort((a , b)=> a.comments.length - b.comments.length))
         break
 
     }
+
   }
+
+  useEffect(()=>(
+    setPosts(posts)
+  ) , [posts] )
 
 
   return (

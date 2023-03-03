@@ -10,7 +10,7 @@ const data = {
         "title": "Add tags for solutions",
         "category": "enhancement",
         "upvotes": 112,
-        "upvoted": false,
+        "upvoted": true,
         "status": "suggestion",
         "description": "Easier to search for solutions based on a specific stack.",
         "comments": [
