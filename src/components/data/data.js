@@ -1,9 +1,5 @@
 const data = {
-    "currentUser": {
-      "image": "./assets/user-images/image-zena.jpg",
-      "name": "Zena Kelley",
-      "username": "velvetround"
-    },
+    "currentUser": {},
     "productRequests": [
       {
         "id": 1,
@@ -321,9 +317,7 @@ export const getData = ()=> {
   return data
 }
 
-export const  currentUser = ()=> {
-  return data['currentUser']
-}
+
 
 export const getposts = ()=> {
   return data['productRequests']

@@ -4,12 +4,14 @@ import ReplyForm from './ReplyForm'
 
 function Replies(props) {
     let {data  , setData  ,  posts , setPosts} = useContext(Userdata)
+
     let comment = props.comment 
     let setreplyTo = props.setreplyTo ; 
     let replyTo = props.replyTo ;
     let setShowForm = props.setShowForm ;
 
     let [showReplyForm ,  setShowReplyForm] = useState([false , -1])
+    
 
     let activeuser = JSON.parse(data)['currentUser'].username
 
@@ -27,7 +29,7 @@ function Replies(props) {
 
 
     return (
-        <div className='replies my-3 border-l px-2 flex flex-col gap-6 '>
+        <div className='replies my-3 border-l px-2 flex flex-col gap-6 md:my-1 sm:m-1/2 md:p-0 '>
             { comment.replies.map((reply , index) => {
                 return (
                     <div key={index} className='reply  mb-3 flex flex-col '>
@@ -37,10 +39,10 @@ function Replies(props) {
                             <h4 className='font-bold'>{reply.user.name}</h4>
                             <span className='text-gray-500'>@{reply.user.username}</span>
                             </div>
-                            {reply.user.username !== activeuser &&  <button className='text-blue-600 ml-auto font-medium cursor-pointer' onClick={()=>{HandReplyform(index , reply.user.username , comment.id)}} >Reply</button>}
+                            {reply.user.username !== activeuser &&  <button className='text-blue-600 ml-auto font-medium cursor-pointer md:pr-2' onClick={()=>{HandReplyform(index , reply.user.username , comment.id)}} >Reply</button>}
                         </div>
-                        <div className='flex flex-col w-[90%] ml-auto gap-4'>
-                            <p className=''><span className='text-purple-600 font-bold '>@{ reply.replyingTo } </span>{reply.content}</p>
+                        <div className='flex flex-col w-full ml-auto gap-2 pl-[4.2rem] mt-1 md:p-1 md:pr-2 '>
+                            <p className=''><span className='text-purple-600 font-bold  '>@{ reply.replyingTo } </span>{reply.content}</p>
                             { showReplyForm[0] && showReplyForm[1] == index &&  <ReplyForm  replyTo={replyTo} closeform = {setShowReplyForm} /> }
                         </div>
                     </div>

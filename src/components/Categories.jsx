@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext,  useState } from "react";
 import { Userdata } from "./context/Contextfuncs";
 
 function Categories() {
@@ -27,9 +27,9 @@ function Categories() {
   }
 
   return (
-    <div className=" capitalize category shadow-md w-[250px] rounded-lg p-4 bg-white text-black ">
+    <div className="  capitalize category shadow-md xl:min-w-[30%] xl:max-w-[30%] xl:min-h-[120px] xl:h-[180px] rounded-lg p-4 bg-white text-black md:min-w-[95%]  " >
       <ul className="category-list flex gap-4 flex-wrap bg-white">
-        <li onClick={()=> {HandleFilter('All')}} className={`py-1 px-2 rounded-lg ${ getCateories(posts).length > 1 ?  'bg-blue-400 text-white' : 'bg-gray-200 text-blue-600' } cursor-pointer hover:opacity-75 `}>
+        <li onClick={()=> {HandleFilter('All')}} className={`py-1 px-2 rounded-lg ${ getCateories(posts).length > 1 ?  'bg-blue-400 text-white' : 'bg-gray-200 text-blue-600' } cursor-pointer hover:opacity-75 `} >
           All
         </li>
         {category_list.map((cat, index) => {

@@ -10,7 +10,8 @@
 
 # production
 /build
-
+# client id for  google login
+.env
 # misc
 .DS_Store
 .env.local
