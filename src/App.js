@@ -16,13 +16,13 @@ import Errorpage from "./components/Errorpage";
 function App() {
   // set localstrage for data
   //  this  controls  the  side bar  menu  of  mobile  version
-  let [open , setOpen ] = useState(false)
+  
   const [data, setData] = useLocalStorage("data", JSON.stringify(getData()));
 
 
   const getposts = () => {
     return JSON.parse(data)["productRequests"].sort(
-      (a, b) => b.upvotes - a.upvotes
+      (a, b) => b.upvotes - a.upvotes 
     );
   };
 
@@ -32,7 +32,7 @@ function App() {
 
   return (
     <div className="App md:w-[100%]   flex w-[90%] lg:w-full xl:flex-col  mx-auto md:p-0   my-4 mt-[20px]  md:rounded-none p-2 rounded-lg  gap-2 md:mt-5  sm:mt-0">
-      <Userdata.Provider value={{ data, setData, posts, setPosts , open , setOpen }}>
+      <Userdata.Provider value={{ data, setData, posts, setPosts  }}>
         <Routes>
           <Route
             path="/"

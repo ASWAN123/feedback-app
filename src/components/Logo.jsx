@@ -4,7 +4,8 @@ import {GrClose} from "react-icons/gr" ;
 import { Userdata } from './context/Contextfuncs';
 
 function Logo() {
-    let  { open , setOpen } = useContext(Userdata)
+    let [open , setOpen ] = useState(false)
+
 
     const showmenu = ()=> {
         document.querySelector('.sidebarmenu').classList.remove('md:right-[-1000px]')
@@ -25,7 +26,7 @@ function Logo() {
             </div> 
             <button className=' md:visible invisible '>
             { !open &&  <BiMenu size={30} onClick={()=> {setOpen(true) ; showmenu()      }} className=" cursor-pointer "/> }
-            { open  &&  <GrClose size={20}  onClick={()=> {setOpen(false) ; hidemenu() }}  className="  cursor-pointer  "/>  }
+            { open  &&  <GrClose size={20}  onClick={()=> {setOpen(false) ; hidemenu()   }}  className="  cursor-pointer  "/>  }
             </button>
         </div>
     )
