@@ -25,7 +25,7 @@ function Logo() {
             </div> 
             <button className=' md:visible invisible '>
             { !open &&  <BiMenu size={30} onClick={()=> {setOpen(true) ; showmenu()      }} className=" cursor-pointer "/> }
-            { open  &&  <GrClose size={20}  onClick={()=> {setOpen(false) ; ; hidemenu() }}  className="  cursor-pointer  "/>  }
+            { open  &&  <GrClose size={20}  onClick={()=> {setOpen(false) ; hidemenu() }}  className="  cursor-pointer  "/>  }
             </button>
         </div>
     )

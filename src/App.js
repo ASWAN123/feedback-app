@@ -16,7 +16,7 @@ import Errorpage from "./components/Errorpage";
 function App() {
   // set localstrage for data
   //  this  controls  the  side bar  menu  of  mobile  version
-  let [open , setOpen] = useState(false)
+  let [open , setOpen ] = useState(false)
   const [data, setData] = useLocalStorage("data", JSON.stringify(getData()));
 
 
