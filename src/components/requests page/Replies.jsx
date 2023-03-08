@@ -34,7 +34,7 @@ function Replies(props) {
                 return (
                     <div key={index} className='reply  mb-3 flex flex-col '>
                         <div className='flex gap-4'>
-                            <img className='w-[50px] h-[50px] rounded-full' src={reply.user.image.replace('./','/')} alt="" />
+                            <img className='w-[50px] h-[50px] rounded-full' src={reply.user.image} alt="" />
                             <div className='info'>
                             <h4 className='font-bold'>{reply.user.name}</h4>
                             <span className='text-gray-500'>@{reply.user.username}</span>

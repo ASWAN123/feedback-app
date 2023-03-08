@@ -156,7 +156,7 @@ function Header() {
             className=" signbutton logout md:fixed md:right-[50px] md:invisible md:bottom-5 md:min-w-[200px]  cursor-pointer rounded-lg px-[2px] flex gap-2 bg-white items-center justify-center"
           >
             <img
-              src="/assets/user-images/google.jpg"
+              src="./assets/user-images/google.jpg"
               className=" rounded-full h-[30px] w-[30px]"
               alt=""
             />

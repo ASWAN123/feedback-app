@@ -36,7 +36,7 @@ function Comments({post}) {
           return (
             <div key={comment.id} className='comment flex flex-col sm:p-0 justify-center p-2 border-b last:border-b-0'>
               <div className='flex gap-4 p-4'>
-              <img className='w-[50px] h-[50px] rounded-full' src={comment.user.image.replace('./','/')} alt="" />
+              <img className='w-[50px] h-[50px] rounded-full' src={comment.user.image} alt="" />
               <div className='info'>
                 <h4 className='font-bold'>{comment.user.name}</h4>
                 <span className='text-gray-500'>@{comment.user.username}</span>
